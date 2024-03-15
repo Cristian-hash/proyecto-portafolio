@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url({% static 'images/teachers_background.jpg)' %}"></div>
+    </div>
+    <div class="home_content">
+        <h1>Inscripciones</h1>
+    </div>
+</div>
+
+<div class="teachers page_section">
+    {% if messageDelete %}
+    <div class="container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Curso Eliminado.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container">        
+        <div class="row">
+        {% for inscription in inscriptions %}            
+            <!-- Teacher -->
+            <div class="col-lg-4 teacher">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="card-text"><br><br><br><h2>{{inscription}}</h2></div>
+                        <a class="btn btn-primary" href="{% url 'edit_inscription' inscription.id %}">Editar</a>
+                        <a class="btn btn-primary" href="{% url 'delete_inscription' inscription.id %}"> Eliminar</a>                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>  
+
+<!-- {% if messageDelete %}
+Curso Eliminado
+{% endif %}
+
+{% for inscription in inscriptions %}            
+
+    {{inscription}}
+
+    <a class="button" href="{% url 'edit_inscription' inscription.id %}">Editar</a><br>
+    <a class="button" href="{% url 'delete_inscription' inscription.id %}">Eliminar</a><br>       
+
+{% endfor %} -->
+
+{% endblock %}

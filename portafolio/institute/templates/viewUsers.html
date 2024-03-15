@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url({% static 'images/teachers_background.jpg)' %}"></div>
+    </div>
+    <div class="home_content">
+        <h1>Usuarios</h1>
+    </div>
+</div>
+
+<div class="teachers page_section">
+    
+    {% include 'messages.html' %}
+
+    <div class="container">        
+        <div class="row">
+        {% for user in users %}
+            <div class="col-lg-4 teacher">
+                <div class="card">
+                    <div class="card_img">
+                        <img class="card-img-top trans_200"  alt="https://unsplash.com/@michaeldam" src="{{user.profile_picture.url}}">    
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="card-title"><a href="#">{{user}}</a></div>
+                        <div class="card-text">
+                            <!--Roles:
+                            {% for group in user.groups.all %}
+                                {% if forloop.revcounter0 == 0 %}
+                                    {{group}}
+                                {% else %}
+                                    {{group}},
+                                {% endif %} 
+                            {% endfor %}-->
+                            Rol: {{user.groups.first}}
+                        </div>
+                        <a class="button" href="{% url 'edit_user' user.id %}">Editar</a> |
+                        <a class="button" href="{% url 'delete_user' user.id %}"> Eliminar</a>                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>  
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 
+<form method="POST" action="#">
+    {% csrf_token %} 
+
+    {{ form.as_p}} 
+    
+
+    <input type="submit" value="SAVE">
+</form>
+-->
+<div class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                
+                <!-- Contact Form -->
+                <div class="contact_form">
+                    <div class="contact_title">Editar datos del usuario</div>
+
+                    <div class="contact_form_container">
+
+                        <form method="POST" action="{% url 'edit_user' user.id %}" class="contact_form">
+                            {% csrf_token %} 
+                            {{form}}
+                            <input class="contact_send_btn trans_200" type="submit" value="GUARDAR">
+                        </form>
+                        
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

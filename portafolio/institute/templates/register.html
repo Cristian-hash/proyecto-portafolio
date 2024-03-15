@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="contact_form">
+                    <div class="contact_form_container">
+                        {% for message in messages %}
+                            <div class="alert alert-success">
+                                <a class="close" href="#" data-dismiss="alert">×</a>        
+                                {{ message }}        
+                            </div>
+                        {% endfor %}
+                        <form method="POST" action="register" class="contact_form">
+                            {% csrf_token %} 
+                            <input id="names_input" class="input_field" type="text" placeholder="Nombre" required="required" data-error="Tiene que añadir un nombre" name="names">
+                            <input id="first_last_name_input" class="input_field" type="text" placeholder="Primer Apellido" required="required" data-error="Tiene que añadir un Apellido" name="first_last_name">
+                            <input id="second_last_name_input" class="input_field" type="text" placeholder="Segundo Apellido" required="required" data-error="Tiene que añadir un Apellido" name="second_last_name">
+                            <input id="email_input" class="input_field" type="email" placeholder="Email" required="required" data-error="Debe ingresar un correo" name="email">
+                            <input id="password_input" class="input_field" type="password" placeholder="Contraseña" required="required" data-error="Debe ingresar una contraseña" name="password_1">
+                            <input id="password_input" class="input_field" type="password" placeholder="Repita contraseña" required="required" data-error="Debe ingresar una contraseña" name="password_2">
+                            <input class="contact_send_btn trans_200" type="submit" value="Registrarse como invitado">
+                        </form>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="home">
+        <div class="home_background_container prlx_parent">
+            <div class="home_background prlx" style="background-image:url({% static 'images/teachers_background.jpg)' %}"></div>
+        </div>
+        <div class="home_content">
+            <h1>Cursos</h1>
+        </div>
+    </div>
+
+    <div class="teachers page_section">
+
+        {% include 'messages.html' %}
+        <div class="container">        
+            <div class="row">
+            {% for course in courses %}            
+                <!-- Curso -->
+                <div class="col-lg-4 teacher">
+                    <div class="card">
+                        <div class="card_img">
+                            <img class="card-img-top trans_200" src="{% static 'images/course_1.jpg' %}" alt="https://unsplash.com/@michaeldam">
+                        </div>
+                        <div class="card-body text-center">
+
+                            <div class="card-title"><a href="#">{{course.name}}</a></div>
+                            <div class="card-text">{{course.teoric_hours}} hrs teóricas | {{course.practice_hours}} hrs prácticas</div>
+                            
+                            
+                            <a class="button" href="{% url 'edit_course' course.id %}">Editar</a> |
+                            <a class="button" href="{% url 'delete_course' course.id %}"> Eliminar</a>                        
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- {% if messageDelete %}
+    <div class="alert alert-primary" role="alert">
+    Curso Eliminado
+    </div>
+    {% endif %}
+    <div class="home">
+        <div class="home_background_container prlx_parent">
+            <div class="home_background prlx" style="background-image:url(images/teachers_background.jpg)"></div>
+        </div>
+        <div class="home_content">
+            <h1>Cursos</h1>
+        </div>
+    </div>
+    <div class="hero_boxes">
+        <div class="hero_boxes_inner">
+            <div class="container">
+            {% for course in courses %}        
+
+            {{course.name}}
+            <a class="button" href="{% url 'edit_course' course.id %}">Editar</a><br>
+            <a class="button" href="{% url 'delete_course' course.id %}">Eliminar</a><br>
+                            
+            {% endfor %}
+            </div>
+        </div>
+    </div> -->
+{% endblock %}

@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br><br><br><br>
+<div class="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				
+				<!-- Contact Form -->
+				<div class="contact_form">					
+					
+					<form action="{% url 'delete_inscription' inscription.id %}" method="POST"> {% csrf_token %}
+						<h2> Quiere eliminar esta matricula </h2>
+						<h2> {{inscription.name}} </h2>
+						<input type="submit" value="SI"/>
+						<a href="/view_inscriptions"> Cancelar </a>
+					</form>
+
+				</div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

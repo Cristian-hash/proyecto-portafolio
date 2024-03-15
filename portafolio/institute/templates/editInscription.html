@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                
+                <!-- Contact Form -->
+                <div class="contact_form">
+                    <div class="contact_title">Get in touch</div>
+
+                    <div class="contact_form_container">
+                        <form method="POST" action="{% url 'edit_inscription' inscription.id %}" class="contact_form">
+                            {% csrf_token %}
+                            <!--Falta-->
+                                                        
+                            <input class="contact_send_btn trans_200" type="submit" value="SAVE">
+                        </form>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
